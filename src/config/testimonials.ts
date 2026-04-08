@@ -1,0 +1,58 @@
+import type { Testimonial } from "@/types/testimonial";
+
+export const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: "Carmen Ruiz",
+    initials: "CR",
+    text: "Llevo siendo paciente del Dr. Godoy más de 25 años. Su profesionalidad y experiencia son extraordinarias. Me ha realizado varios implantes y una rehabilitación completa. El resultado no podría ser mejor. Es un verdadero especialista en quien confío totalmente.",
+    treatment: "Implantes y rehabilitación",
+    since: "2000",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Luis García",
+    initials: "LG",
+    text: "Mi ortodoncia con el Dr. Godoy fue perfecta. Su experiencia de 35 años se nota en cada consulta. Explicó todo el proceso detalladamente y los resultados superaron mis expectativas. Un profesional excepcional con un trato humano increíble.",
+    treatment: "Ortodoncia",
+    since: "2018",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Elena Martínez",
+    initials: "EM",
+    text: "Después de años evitando al dentista por malas experiencias, encontré en el Dr. Godoy un trato tan profesional y cálido que cambió completamente mi percepción. Su formación en Montpellier y experiencia se reflejan en cada tratamiento. Ahora vengo sin ansiedad.",
+    treatment: "Odontología conservadora",
+    since: "2019",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "Antonio López",
+    initials: "AL",
+    text: "Necesitaba una rehabilitación completa y el Dr. Godoy me devolvió la confianza. Su experiencia y la tecnología que utiliza hacen que los tratamientos sean más precisos y cómodos. Totalmente recomendable.",
+    treatment: "Prostodoncia",
+    since: "2015",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "María Jiménez",
+    initials: "MJ",
+    text: "Trato a toda mi familia en la clínica. Tanto a mis hijos como a mí nos atienden con profesionalidad y paciencia. Es difícil encontrar un especialista que combine experiencia con trato tan humano.",
+    treatment: "Familia completa",
+    since: "2012",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Manuel Herrera",
+    initials: "MH",
+    text: "La cirugía con láser del Dr. Godoy fue increíble. Sin dolor, sin sangrado y recuperación ultrarrápida. Su formación continua en Europa se nota en el uso de tecnologías avanzadas. Un nivel profesional que no he encontrado en ningún otro sitio.",
+    treatment: "Cirugía láser",
+    since: "2021",
+    rating: 5,
+  },
+];

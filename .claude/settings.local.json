@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp /Users/Godoy/Desktop/clinica-rafael-godoy-web/PROJECT-BRIEF.md /tmp/PROJECT-BRIEF.md)",
+      "Bash(cp /Users/Godoy/Desktop/clinica-rafael-godoy-web/content-data.json /tmp/content-data.json)",
+      "Bash(cp /Users/Godoy/Desktop/clinica-rafael-godoy-web/INSTRUCTIONS-FOR-CLAUDE-CODE.md /tmp/INSTRUCTIONS-FOR-CLAUDE-CODE.md)",
+      "Bash(rm /Users/Godoy/Desktop/clinica-rafael-godoy-web/PROJECT-BRIEF.md /Users/Godoy/Desktop/clinica-rafael-godoy-web/content-data.json /Users/Godoy/Desktop/clinica-rafael-godoy-web/INSTRUCTIONS-FOR-CLAUDE-CODE.md)",
+      "Bash(cp /tmp/PROJECT-BRIEF.md /Users/Godoy/Desktop/clinica-rafael-godoy-web/PROJECT-BRIEF.md)",
+      "Bash(cp /tmp/content-data.json /Users/Godoy/Desktop/clinica-rafael-godoy-web/content-data.json)",
+      "Bash(cp /tmp/INSTRUCTIONS-FOR-CLAUDE-CODE.md /Users/Godoy/Desktop/clinica-rafael-godoy-web/INSTRUCTIONS-FOR-CLAUDE-CODE.md)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000)",
+      "Bash(echo \"HOME: $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000\\)\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/aviso-legal)",
+      "Bash(echo \"LEGAL: $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/aviso-legal\\)\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/politica-privacidad)",
+      "Bash(echo \"HOME:        $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000\\)\")",
+      "Bash(echo \"LEGALES:     $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/aviso-legal\\)\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/robots.txt)",
+      "Bash(echo \"ROBOTS:      $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/robots.txt\\)\")",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/sitemap.xml)",
+      "Bash(echo \"HOME:     $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000\\)\")",
+      "Bash(echo \"LEGAL:    $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/aviso-legal\\)\")",
+      "Bash(echo \"ROBOTS:   $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/robots.txt\\)\")",
+      "Bash(echo \"SITEMAP:  $\\(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/sitemap.xml\\)\")"
+    ]
+  }
+}
