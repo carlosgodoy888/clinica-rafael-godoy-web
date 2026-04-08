@@ -65,29 +65,56 @@
   "testimonials": [
     {
       "id": 1,
-      "name": "Carmen Ruiz",
-      "initials": "CR",
-      "text": "Llevo siendo paciente del Dr. Godoy más de 25 años. Su profesionalidad y experiencia son extraordinarias.",
-      "treatment": "Implantes y rehabilitación",
-      "since": "2000",
+      "name": "Alex Sánchez",
+      "initials": "AS",
+      "text": "Siempre he tenido pánico al dentista y ha sido el único capaz de transmitirme tranquilidad y confianza.",
+      "treatment": "Atención sin ansiedad",
+      "since": "Paciente satisfecho",
       "rating": 5
     },
     {
       "id": 2,
-      "name": "Luis García",
-      "initials": "LG",
-      "text": "Mi ortodoncia con el Dr. Godoy fue perfecta. Su experiencia de 35 años se nota en cada consulta.",
-      "treatment": "Ortodoncia",
-      "since": "2018",
+      "name": "Pedro De la Iglesia",
+      "initials": "PI",
+      "text": "Confío plenamente en el Dr. Rafael y su equipo. Me han cuidado desde que era niño y el trato siempre ha sido cercano y amable.",
+      "treatment": "Atención dental familiar",
+      "since": "Paciente de largo recorrido",
       "rating": 5
     },
     {
       "id": 3,
-      "name": "Elena Martínez",
-      "initials": "EM",
-      "text": "Encontré en el Dr. Godoy un trato tan profesional y cálido que cambió completamente mi percepción.",
-      "treatment": "Odontología conservadora",
-      "since": "2019",
+      "name": "Carmen Escalera Leiva",
+      "initials": "CE",
+      "text": "Una clínica dental muy cercana y familiar. La atención del doctor Rafael es estupenda y el equipo está siempre pendiente del paciente.",
+      "treatment": "Clínica familiar",
+      "since": "Paciente satisfecha",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "RafaS",
+      "initials": "RS",
+      "text": "Atención magnífica, equipo amable y eficiente, y un trabajo muy preciso. Todo fue rápido y cómodo.",
+      "treatment": "Atención precisa y cómoda",
+      "since": "Paciente reciente",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Laura Ortiz",
+      "initials": "LO",
+      "text": "Muy amable y simpático, te hace estar tranquila. Buena relación calidad/precio.",
+      "treatment": "Trato cercano",
+      "since": "Paciente satisfecha",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "Antonio Pulido",
+      "initials": "AP",
+      "text": "Gran profesional. Muy contento con el servicio, el trato y el resultado. Muy recomendable.",
+      "treatment": "Servicio muy recomendable",
+      "since": "Paciente satisfecho",
       "rating": 5
     }
   ],

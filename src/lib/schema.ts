@@ -14,13 +14,13 @@ export function generateLocalBusinessSchema() {
     url: site.domain,
     logo: {
       "@type": "ImageObject",
-      url: `${site.domain}/images/og/og-image.jpg`,
+      url: `${site.domain}/images/hero/og-image.jpg`,
       width: 1200,
       height: 630,
     },
     image: [
-      `${site.domain}/images/og/og-image.jpg`,
-      `${site.domain}/images/doctor/dr-rafael-godoy-portrait.jpg`,
+      `${site.domain}/images/hero/og-image.jpg`,
+      `${site.domain}/images/doctor/rafael-godoy.jpg`,
       `${site.domain}/images/clinic/clinica-exterior.jpg`,
     ],
     telephone: clinic.contact.phone,
@@ -111,10 +111,6 @@ export function generateLocalBusinessSchema() {
         },
       })),
     },
-    sameAs: [
-      "https://www.facebook.com/clinicarafaelgodoy",
-      "https://www.instagram.com/drrafaelgodoy",
-    ],
   };
 }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CheckCircle, Quote, Phone } from "lucide-react";
 import { clinic } from "@/config/clinic";
 import { Container } from "@/components/ui/Container";
@@ -42,23 +43,13 @@ export function DoctorSection() {
                 className="relative flex-1 min-h-[280px] lg:min-h-[420px] bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 flex items-center justify-center overflow-hidden"
                 aria-label="Dr. Rafael Godoy Pizarro, dentista y estomatólogo especialista en Córdoba"
               >
-                {/* ── Sustituir por <Image> cuando tengas la foto ──
-                    <Image
-                      src="/doctor/rafael-godoy.jpg"
-                      alt="Dr. Rafael Godoy Pizarro, dentista y estomatólogo en Córdoba"
-                      fill
-                      className="object-cover object-top"
-                      priority
-                    />
-                */}
-                <div className="flex flex-col items-center gap-3 text-center px-8 relative z-10">
-                  <div className="w-32 h-32 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center shadow-inner">
-                    <span className="text-7xl select-none" role="img" aria-hidden="true">👨‍⚕️</span>
-                  </div>
-                  <p className="text-teal-700 font-semibold text-sm">
-                    Foto profesional próximamente
-                  </p>
-                </div>
+                <Image
+                  src="/images/doctor/rafael-godoy.jpg"
+                  alt="Dr. Rafael Godoy Pizarro, dentista y estomatólogo en Córdoba"
+                  fill
+                  className="object-cover object-top"
+                  priority
+                />
 
                 {/* Badge flotante — años */}
                 <div
