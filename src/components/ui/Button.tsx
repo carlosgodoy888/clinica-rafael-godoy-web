@@ -50,10 +50,12 @@ export function Button({
   );
 
   if (props.as === "a") {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { as: _as, ...anchorProps } = props as ButtonAsAnchor;
     return <a className={classes} {...anchorProps} />;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { as: _as, ...buttonProps } = props as ButtonAsButton;
   return <button className={classes} {...buttonProps} />;
 }

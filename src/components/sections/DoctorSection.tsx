@@ -81,9 +81,9 @@ export function DoctorSection() {
                   aria-hidden="true"
                 />
                 <p className="text-gray-600 italic leading-relaxed text-sm pl-7">
-                  "Cada paciente merece un tratamiento único. Mi compromiso es combinar
+                  &ldquo;Cada paciente merece un tratamiento único. Mi compromiso es combinar
                   35 años de experiencia como dentista especialista con las técnicas más
-                  avanzadas de Europa."
+                  avanzadas de Europa.&rdquo;
                 </p>
                 <footer className="mt-3 pl-7">
                   <cite className="not-italic text-sm font-bold text-teal-700">

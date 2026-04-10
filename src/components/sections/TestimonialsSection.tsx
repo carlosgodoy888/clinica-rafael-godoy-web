@@ -2,7 +2,6 @@ import { Star } from "lucide-react";
 import { testimonials } from "@/config/testimonials";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { clinic } from "@/config/clinic";
 
 function StarRating({ rating, max = 5 }: { rating: number; max?: number }) {
   return (

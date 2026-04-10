@@ -60,7 +60,7 @@ export default function AvisoLegalPage() {
         <h2>2. Objeto y Ámbito de Aplicación</h2>
         <p>
           El presente Aviso Legal regula el acceso y uso del sitio web{" "}
-          <a href={site.domain}>{site.domain}</a> (en adelante, "el Sitio Web"), titularidad
+          <a href={site.domain}>{site.domain}</a> (en adelante, &ldquo;el Sitio Web&rdquo;), titularidad
           de {clinic.doctor.fullName}. El acceso al Sitio Web implica la aceptación plena
           y sin reservas de las presentes condiciones.
         </p>
