@@ -40,14 +40,15 @@ export function DoctorSection() {
               {/* Foto — ocupa el espacio disponible */}
               <div
                 id="doctor-photo"
-                className="relative flex-1 min-h-[280px] lg:min-h-[420px] bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 flex items-center justify-center overflow-hidden"
+                className="relative w-full aspect-[3/4] lg:aspect-auto lg:flex-1 lg:min-h-[520px] bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 overflow-hidden"
                 aria-label="Dr. Rafael Godoy Pizarro, dentista y estomatólogo especialista en Córdoba"
               >
                 <Image
-                  src="/images/doctor/rafael-godoy.jpg"
+                  src="/images/doctor/rafael-godoy-v02.jpg"
                   alt="Dr. Rafael Godoy Pizarro, dentista y estomatólogo en Córdoba"
                   fill
-                  className="object-cover object-top"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-[50%_8%]"
                   priority
                 />
 

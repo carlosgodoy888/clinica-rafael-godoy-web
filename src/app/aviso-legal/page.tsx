@@ -25,7 +25,7 @@ export default function AvisoLegalPage() {
             <strong>Titular:</strong> {clinic.doctor.fullName}
           </li>
           <li>
-            <strong>NIF:</strong> [PENDIENTE DE COMPLETAR]
+            <strong>NIF:</strong> [30198521G]
           </li>
           <li>
             <strong>Denominación comercial:</strong> {clinic.name}

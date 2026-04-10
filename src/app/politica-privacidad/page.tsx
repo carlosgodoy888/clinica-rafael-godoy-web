@@ -20,7 +20,7 @@ export default function PoliticaPrivacidadPage() {
             <strong>Identidad:</strong> {clinic.doctor.fullName}
           </li>
           <li>
-            <strong>NIF:</strong> [PENDIENTE DE COMPLETAR]
+            <strong>NIF:</strong> [30198521G]
           </li>
           <li>
             <strong>Dirección:</strong> {clinic.contact.address.street},{" "}

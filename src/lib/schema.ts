@@ -20,7 +20,7 @@ export function generateLocalBusinessSchema() {
     },
     image: [
       `${site.domain}/images/hero/og-image.jpg`,
-      `${site.domain}/images/doctor/rafael-godoy.jpg`,
+      `${site.domain}/images/doctor/rafael-godoy-v02.jpg`,
       `${site.domain}/images/clinic/clinica-exterior.jpg`,
     ],
     telephone: clinic.contact.phone,
