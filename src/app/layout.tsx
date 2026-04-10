@@ -15,7 +15,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
+const baseMetadata = {
   title: {
     default: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
     template: "%s | Clínica Dental Dr. Rafael Godoy",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     canonical: site.domain,
   },
   openGraph: {
-    type: "website",
+    type: "website" as const,
     siteName: site.name,
     title: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
     description:
@@ -44,14 +44,27 @@ export const metadata: Metadata = {
       },
     ],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true },
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
+    description:
+      "Atención cercana y tratamientos personalizados. 35 años de experiencia. Formación Universidad de Montpellier. ☎ 957 29 29 69",
+    images: [`${site.domain}/images/hero/og-image.jpg`],
   },
   other: {
     "theme-color": "#007C7C",
   },
+};
+
+// En preview y desarrollo devolvemos noindex para no contaminar el índice de Google.
+// En producción (Vercel env = "production") se indexa normalmente.
+const isProduction = process.env.VERCEL_ENV === "production";
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  robots: isProduction
+    ? { index: true, follow: true, googleBot: { index: true, follow: true } }
+    : { index: false, follow: false },
 };
 
 const localBusinessSchema = generateLocalBusinessSchema();

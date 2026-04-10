@@ -82,7 +82,33 @@ export default function PoliticaCookiesPage() {
 
         <h3>2.3 Cookies de Marketing</h3>
         <p>
-          En la versión actual del sitio web <strong>no utilizamos cookies de marketing</strong>.
+          Nuestro sitio incluye un mapa interactivo de Google Maps. Si acepta
+          las cookies de marketing, Google Maps se activará y puede establecer
+          sus propias cookies con fines de personalización y publicidad según
+          sus propias políticas.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Servicio</th>
+              <th>Proveedor</th>
+              <th>Finalidad</th>
+              <th>Condición</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Maps</td>
+              <td>Google LLC</td>
+              <td>Mapa interactivo embebido; Google puede establecer cookies de personalización</td>
+              <td>Solo si acepta cookies de marketing</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Si rechaza las cookies de marketing, el mapa no se cargará pero seguirá
+          pudiendo acceder a nuestra dirección y abrirnos en Google Maps o Apple
+          Maps usando los botones disponibles.
         </p>
       </section>
 

@@ -59,6 +59,12 @@ export function generateLocalBusinessSchema() {
         closes: "14:00",
       },
     ],
+    // Añadir la URL del perfil de Google Business Profile y redes sociales
+    // cuando estén disponibles. Ejemplo:
+    //   sameAs: [
+    //     "https://g.page/[PLACEHOLDER_GBP_URL]",
+    //     "https://www.facebook.com/[PLACEHOLDER]",
+    //   ],
     priceRange: "€€",
     currenciesAccepted: "EUR",
     paymentAccepted: "Cash, Credit Card",

@@ -30,6 +30,38 @@ export function trackMapClick() {
   });
 }
 
+export function trackEmailClick(location: string) {
+  pushEvent("email_click", {
+    event_category: "engagement",
+    event_label: location,
+  });
+}
+
+export function trackCtaClick(ctaName: string, location: string) {
+  pushEvent("cta_click", {
+    event_category: "engagement",
+    cta_name: ctaName,
+    cta_location: location,
+  });
+}
+
+// Preparada para cuando se añada botón de WhatsApp.
+export function trackWhatsAppClick(location: string) {
+  pushEvent("whatsapp_click", {
+    event_category: "engagement",
+    event_label: location,
+  });
+}
+
+// Llamar con porcentajes: 25, 50, 75, 100.
+export function trackScrollDepth(percentage: number) {
+  pushEvent("scroll_depth", {
+    event_category: "engagement",
+    event_label: `${percentage}%`,
+    scroll_percentage: percentage,
+  });
+}
+
 export function getGtmScript(gtmId = site.tracking.gtmId) {
   return `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
