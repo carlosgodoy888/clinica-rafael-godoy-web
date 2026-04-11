@@ -48,10 +48,7 @@ export default function AvisoLegalPage() {
             <a href={site.domain}>{site.domain}</a>
           </li>
           <li>
-            <strong>Registro Sanitario:</strong> [PENDIENTE DE COMPLETAR]
-          </li>
-          <li>
-            <strong>Colegio Profesional:</strong> Ilustre Colegio de Médicos de Córdoba
+            <strong>Colegio Odontologos:</strong> Ilustre Colegio de Odontólogos de Córdoba , Núm. Colegiado: 14001550
           </li>
         </ul>
       </section>
