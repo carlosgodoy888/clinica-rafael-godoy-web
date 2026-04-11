@@ -4,10 +4,11 @@ import { clinic } from "@/config/clinic";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Aviso Legal | Clínica Dental Dr. Rafael Godoy",
+  title: "Aviso Legal",
   description:
     "Información legal de la Clínica Dental Dr. Rafael Godoy en Córdoba. Datos identificativos y condiciones de uso del sitio web.",
   alternates: { canonical: `${site.domain}/aviso-legal` },
+  robots: { index: false, follow: false },
 };
 
 export default function AvisoLegalPage() {

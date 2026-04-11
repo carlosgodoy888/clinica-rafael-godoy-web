@@ -3,10 +3,11 @@ import { LegalLayout } from "@/components/legal/LegalLayout";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Política de Cookies | Clínica Dental Dr. Rafael Godoy",
+  title: "Política de Cookies",
   description:
     "Información sobre el uso de cookies en clinicarafaelgodoy.es. Gestión y configuración de cookies.",
   alternates: { canonical: `${site.domain}/politica-cookies` },
+  robots: { index: false, follow: false },
 };
 
 export default function PoliticaCookiesPage() {

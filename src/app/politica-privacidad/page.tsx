@@ -4,10 +4,11 @@ import { clinic } from "@/config/clinic";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | Clínica Dental Dr. Rafael Godoy",
+  title: "Política de Privacidad",
   description:
     "Información sobre protección de datos personales y privacidad en la Clínica Dental Dr. Rafael Godoy. Cumplimiento RGPD.",
   alternates: { canonical: `${site.domain}/politica-privacidad` },
+  robots: { index: false, follow: false },
 };
 
 export default function PoliticaPrivacidadPage() {
