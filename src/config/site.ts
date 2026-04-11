@@ -17,6 +17,6 @@ export const site = {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-T89SFQTZ",
     cookiebotId:
       process.env.NEXT_PUBLIC_COOKIEBOT_ID ??
-      "90daba5c-1344-4c8f-8b95-813d140ce76d",
+      "c7975d1-bb51-4502-90ba-26d82b4223fa",
   },
 };
