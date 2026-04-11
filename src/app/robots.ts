@@ -2,196 +2,202 @@ import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
 
 /**
- * robots.ts — Control de acceso para rastreadores web
+ * robots.ts — Política de rastreo
  *
- * IMPORTANTE: Las páginas legales (politica-privacidad, politica-cookies, aviso-legal)
- * tienen noindex en su metadata. NO se bloquean aquí porque el rastreador necesita
- * leer el noindex para poder des-indexarlas correctamente.
+ * Estrategia:
+ * - Motores de búsqueda clásicos: acceso total (necesitan indexar todo para SEO).
+ * - Bots de IA: solo la página principal "/$" donde está toda la info de la clínica.
+ *   Así las IAs responden con datos de contacto, servicios y ubicación, sin exponer
+ *   las páginas legales ni rutas internas.
+ * - Regla general "*": acceso total excepto rutas internas de Next.js.
  *
- * TIEMPOS ESTIMADOS PARA VER RESULTADOS:
- * - Google / Google Maps / Google AI Overviews:  1–4 semanas
- * - Bing / Microsoft Copilot:                    2–4 semanas
- * - Perplexity:                                  1–2 semanas
- * - ChatGPT (búsqueda web en tiempo real):       1–2 semanas
- * - ChatGPT (datos de entrenamiento):            varios meses (ciclo de re-entrenamiento)
- * - Claude (claude.ai con búsqueda web):         1–2 semanas
- * - Apple Maps / Siri:                           2–6 semanas
- * - Common Crawl (base de entrenamiento de LLMs): 1–2 meses (snapshots mensuales)
- *
- * QUÉ DEBES HACER TÚ:
- * 1. Verificar/reclamar el perfil en Google Business Profile (maps.google.com/business)
- *    → Es lo más importante para aparecer en búsquedas de "dentista córdoba" con teléfono.
- * 2. Enviar sitemap manualmente en Google Search Console (search.google.com/search-console)
- *    → Acelera la re-indexación tras estos cambios.
- * 3. Reclamar perfil en Bing Places (bingplaces.com) → alimenta Microsoft Copilot.
- * 4. Reclamar o actualizar ficha en Doctoralia (doctoralia.es)
- *    → Directorio líder de salud en España; aparece en búsquedas de dentistas.
- * 5. Añadir la clínica en Apple Maps Connect (mapsconnect.apple.com) → Siri + Apple Maps.
- * 6. Verificar ficha en Yelp (yelp.es) → usado por algunos bots de IA como fuente.
+ * NOTA: Las páginas legales tienen noindex en su metadata; no se bloquean aquí
+ * para que los rastreadores puedan leer ese noindex correctamente.
  */
-
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // ─── Motores de búsqueda principales ───────────────────────────────────
+      // ─── Motores de búsqueda clásicos — acceso total ────────────────────────
       {
-        // Google Search — el más importante para SEO local
-        userAgent: "Googlebot",
+        userAgent: "Googlebot",          // Google Search
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
       {
-        // Google Images — para que aparezcan las fotos de la clínica
-        userAgent: "Googlebot-Image",
+        userAgent: "Googlebot-Image",    // Google Imágenes
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
       {
-        // Google AI Overviews y Gemini
-        userAgent: "Google-Extended",
+        userAgent: "Bingbot",            // Bing Search
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
       {
-        // Bing Search + Microsoft Copilot
-        userAgent: ["Bingbot", "msnbot", "msnbot-media"],
+        userAgent: "DuckDuckBot",        // DuckDuckGo
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
       {
-        // DuckDuckGo
-        userAgent: "DuckDuckBot",
+        userAgent: "Slurp",              // Yahoo Search
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
       {
-        // Yahoo Search
-        userAgent: "Slurp",
+        userAgent: "Applebot",           // Apple Maps / Spotlight
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // Apple Maps / Siri Suggestions
-        userAgent: "Applebot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // Yandex (buscador ruso con presencia en Europa)
-        userAgent: "YandexBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
 
-      // ─── IA: búsqueda web en tiempo real ───────────────────────────────────
+      // ─── Bots de IA — solo página principal ─────────────────────────────────
+      // Allow: /$ = solo la URL raíz exacta (https://clinicarafaelgodoy.es/)
+      // Disallow: / = bloquea todo lo demás
       {
-        // ChatGPT (OpenAI) — búsqueda web y entrenamiento
-        userAgent: ["GPTBot", "OAI-SearchBot", "ChatGPT-User"],
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "GPTBot",             // ChatGPT / OpenAI (búsqueda web)
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Claude (Anthropic) — búsqueda web y entrenamiento
-        userAgent: ["ClaudeBot", "anthropic-ai", "Claude-Web"],
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "OAI-SearchBot",      // OpenAI Search
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Perplexity AI — motor de búsqueda con IA muy usado en España
-        userAgent: ["PerplexityBot", "PerplexityBot-User"],
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "ChatGPT-User",       // ChatGPT navegación en tiempo real
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Meta AI (Facebook, Instagram, WhatsApp AI)
-        userAgent: ["Meta-ExternalAgent", "Meta-ExternalFetcher"],
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "ClaudeBot",          // Anthropic Claude (rastreo web)
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Cohere — IA empresarial
-        userAgent: "cohere-ai",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "anthropic-ai",       // Anthropic (entrenamiento)
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // You.com — buscador con IA
-        userAgent: "YouBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "PerplexityBot",      // Perplexity AI
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Brave Search — buscador privado con IA integrada
-        userAgent: "Brave",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "PerplexityBot-User", // Perplexity (sesión de usuario)
+        allow: "/$",
+        disallow: "/",
       },
       {
-        // Common Crawl — base de datos usada en el entrenamiento de la mayoría de LLMs
-        userAgent: "CCBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        userAgent: "Google-Extended",    // Google Gemini + AI Overviews
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Meta-ExternalAgent", // Meta AI (Facebook, Instagram, WhatsApp)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Meta-ExternalFetcher", // Meta AI fetcher
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Applebot-Extended",  // Apple Intelligence / Siri AI
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "msnbot",             // Microsoft Copilot (componente de entrenamiento)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "cohere-ai",          // Cohere AI (Command R)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "YouBot",             // You.com AI search
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Brave",              // Brave Search + Leo AI
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "CCBot",              // Common Crawl (base de entrenamiento de GPT, LLaMA, etc.)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Bytespider",         // ByteDance / Doubao AI (TikTok)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Amazonbot",          // Amazon Alexa / Amazon Q
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Diffbot",            // Diffbot Knowledge Graph (fuente de muchas IAs)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Baiduspider",        // Baidu AI (ERNIE Bot)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "NaverBot",           // Naver Clova AI (Corea)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "PetalBot",           // Huawei Search AI
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Timpibot",           // Timpi Search AI (europeo)
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "omgili",             // Webz.io / fuente de datos para LLMs
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "omgilibot",          // Webz.io bot
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "img2dataset",        // Dataset de imágenes para entrenamiento de IA
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "Scrapy",             // Framework de scraping usado en pipelines de IA
+        allow: "/$",
+        disallow: "/",
+      },
+      {
+        userAgent: "DataForSeoBot",      // DataForSEO (fuente de datos para IAs de marketing)
+        allow: "/$",
+        disallow: "/",
       },
 
-      // ─── Redes sociales (previsualizaciones de enlaces con teléfono/datos) ──
-      {
-        // Facebook e Instagram — previsualización de enlaces con datos de contacto
-        userAgent: ["facebookexternalhit", "Facebot"],
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // Twitter / X
-        userAgent: "Twitterbot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // LinkedIn
-        userAgent: "LinkedInBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // WhatsApp — previsualización al compartir el enlace de la clínica
-        userAgent: "WhatsApp",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // Telegram — previsualización de enlace
-        userAgent: "TelegramBot",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-
-      // ─── Directorios y plataformas de salud ────────────────────────────────
-      {
-        // Doctoralia — directorio líder de salud en España
-        userAgent: "Doctoralia",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-      {
-        // Yelp — directorio de negocios locales usado como fuente por algunas IAs
-        userAgent: "Yelp",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
-      },
-
-      // ─── Fiabilidad y seguridad (mejoran la reputación del dominio) ─────────
-      {
-        // Google Safe Browsing — verifica que el sitio es seguro
-        userAgent: "Google-Safety",
-        allow: "/",
-        disallow: [],
-      },
-
-      // ─── Regla general para cualquier otro rastreador ───────────────────────
+      // ─── Regla general — acceso total para cualquier otro rastreador ────────
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/static/"],
+        disallow: ["/api/", "/_next/"],
       },
     ],
     sitemap: `${site.domain}/sitemap.xml`,
