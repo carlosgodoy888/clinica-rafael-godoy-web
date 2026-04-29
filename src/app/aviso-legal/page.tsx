@@ -8,7 +8,14 @@ export const metadata: Metadata = {
   description:
     "Información legal de la Clínica Dental Dr. Rafael Godoy en Córdoba. Datos identificativos y condiciones de uso del sitio web.",
   alternates: { canonical: `${site.domain}/aviso-legal` },
-  robots: { index: false, follow: false },
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
 };
 
 export default function AvisoLegalPage() {

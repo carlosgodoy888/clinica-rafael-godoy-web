@@ -8,7 +8,14 @@ export const metadata: Metadata = {
   description:
     "Información sobre protección de datos personales y privacidad en la Clínica Dental Dr. Rafael Godoy. Cumplimiento RGPD.",
   alternates: { canonical: `${site.domain}/politica-privacidad` },
-  robots: { index: false, follow: false },
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
 };
 
 export default function PoliticaPrivacidadPage() {

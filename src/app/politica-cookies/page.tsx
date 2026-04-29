@@ -7,7 +7,14 @@ export const metadata: Metadata = {
   description:
     "Información sobre el uso de cookies en clinicarafaelgodoy.es. Gestión y configuración de cookies.",
   alternates: { canonical: `${site.domain}/politica-cookies` },
-  robots: { index: false, follow: false },
+  robots: {
+    index: false,
+    follow: true,
+    googleBot: {
+      index: false,
+      follow: true,
+    },
+  },
 };
 
 export default function PoliticaCookiesPage() {
