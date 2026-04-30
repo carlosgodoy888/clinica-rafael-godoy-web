@@ -15,24 +15,40 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+/**
+ * Metadata global de la web.
+ *
+ * Esta metadata afecta principalmente a la home, porque las páginas de
+ * tratamientos tienen su propia metadata específica en cada page.tsx.
+ *
+ * Enfoque SEO de la home:
+ * - Clínica dental en Córdoba
+ * - Dentista en Córdoba
+ * - Clínica Dental Dr. Rafael Godoy
+ * - Córdoba centro / Plaza de Andalucía
+ *
+ * Las búsquedas de tratamientos concretos se trabajan desde:
+ * - /tratamientos
+ * - /tratamientos/[servicio]-cordoba
+ */
 const baseMetadata = {
   title: {
-    default: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
+    default: "Clínica Dental en Córdoba | Dr. Rafael Godoy",
     template: "%s | Clínica Dental Dr. Rafael Godoy",
   },
   description:
-    "Clínica Dental en Córdoba centro · Dr. Rafael Godoy, 35 años de experiencia. Implantes, ortodoncia, estética dental. Plaza de Andalucía. ☎ 957 29 29 69",
+    "Clínica dental en Córdoba centro. Dr. Rafael Godoy, más de 35 años de experiencia. Ortodoncia, implantes, endodoncia, estética dental, limpieza, periodoncia y prótesis.",
   keywords:
-    "clínica dental córdoba, dentista córdoba, estomatólogo córdoba, clínica dental córdoba centro, dentista plaza andalucía, implantes córdoba, ortodoncia córdoba, dr rafael godoy",
+    "clínica dental córdoba, dentista córdoba, dentista en córdoba, clínica dental córdoba centro, dentista córdoba centro, clínica dental dr rafael godoy, rafael godoy dentista, implantes dentales córdoba, ortodoncia córdoba, endodoncia córdoba, estética dental córdoba, limpieza dental córdoba, periodoncia córdoba, prótesis dental córdoba",
   alternates: {
     canonical: site.domain,
   },
   openGraph: {
     type: "website" as const,
     siteName: site.name,
-    title: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
+    title: "Clínica Dental en Córdoba | Dr. Rafael Godoy",
     description:
-      "Atención cercana y tratamientos personalizados. 35 años de experiencia. Formación Universidad de Montpellier. ☎ 957 29 29 69",
+      "Clínica dental en Córdoba centro con más de 35 años de experiencia. Tratamientos de ortodoncia, implantes, endodoncia, estética dental, limpieza, periodoncia y prótesis.",
     url: site.domain,
     locale: site.locale,
     images: [
@@ -40,15 +56,15 @@ const baseMetadata = {
         url: `${site.domain}/images/hero/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Clínica Dental Dr. Rafael Godoy - 35 años en Córdoba",
+        alt: "Clínica Dental Dr. Rafael Godoy en Córdoba",
       },
     ],
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "Clínica Dental Dr. Rafael Godoy | Córdoba - 35 años",
+    title: "Clínica Dental en Córdoba | Dr. Rafael Godoy",
     description:
-      "Atención cercana y tratamientos personalizados. 35 años de experiencia. Formación Universidad de Montpellier. ☎ 957 29 29 69",
+      "Dentista en Córdoba centro. Más de 35 años de experiencia y tratamientos dentales personalizados.",
     images: [`${site.domain}/images/hero/og-image.jpg`],
   },
   other: {
