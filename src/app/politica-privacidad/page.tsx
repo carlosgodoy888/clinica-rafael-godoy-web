@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function PoliticaPrivacidadPage() {
   return (
-    <LegalLayout title="Política de Privacidad" lastUpdated="Abril 2026">
+    <LegalLayout title="Política de Privacidad" lastUpdated="Mayo 2026">
       <section>
         <h2>1. Responsable del Tratamiento</h2>
         <ul>
@@ -59,11 +59,18 @@ export default function PoliticaPrivacidadPage() {
           </li>
           <li>
             <strong>Comunicación:</strong> Responder a consultas realizadas a través de
-            los canales de contacto disponibles (teléfono, email).
+            los canales de contacto disponibles, principalmente teléfono y correo
+            electrónico.
           </li>
           <li>
             <strong>Analítica web:</strong> Analizar el uso del sitio web mediante
-            herramientas de analítica (solo con su consentimiento previo).
+            herramientas de medición, como Google Tag Manager y Google Analytics, solo
+            cuando el usuario haya prestado su consentimiento previo.
+          </li>
+          <li>
+            <strong>Gestión del consentimiento:</strong> Recordar la elección del usuario
+            sobre cookies y tecnologías similares mediante un sistema propio de
+            preferencias.
           </li>
         </ul>
       </section>
@@ -81,12 +88,14 @@ export default function PoliticaPrivacidadPage() {
             RGPD).
           </li>
           <li>
-            <strong>Consentimiento:</strong> Para el envío de comunicaciones y análisis
-            de navegación web (art. 6.1.a RGPD).
+            <strong>Consentimiento:</strong> Para el envío de comunicaciones solicitadas
+            por el usuario, la analítica web y el uso de cookies o tecnologías similares
+            no necesarias (art. 6.1.a RGPD).
           </li>
           <li>
             <strong>Interés legítimo:</strong> Para la gestión interna de la actividad
-            profesional (art. 6.1.f RGPD).
+            profesional, seguridad del sitio web y funcionamiento técnico básico
+            (art. 6.1.f RGPD).
           </li>
         </ul>
       </section>
@@ -99,6 +108,12 @@ export default function PoliticaPrivacidadPage() {
           se basa en el art. 9.2.h RGPD (asistencia sanitaria), con las garantías
           previstas en la normativa vigente.
         </p>
+        <p>
+          A través de esta web informativa no se recogen historiales clínicos ni datos de
+          salud mediante formularios online. Si el usuario contacta por teléfono o correo
+          electrónico, deberá evitar enviar información clínica sensible salvo que sea
+          estrictamente necesario para la gestión de su consulta.
+        </p>
       </section>
 
       <section>
@@ -110,25 +125,36 @@ export default function PoliticaPrivacidadPage() {
           de contacto se conservarán mientras exista interés en mantener la relación y
           durante los plazos de prescripción legales.
         </p>
+        <p>
+          Las preferencias de cookies y tecnologías similares se conservan durante un
+          máximo de 12 meses, salvo que el usuario las modifique o elimine antes desde su
+          navegador.
+        </p>
       </section>
 
       <section>
         <h2>6. Destinatarios de los Datos</h2>
         <p>
           No cedemos sus datos a terceros salvo obligación legal. Utilizamos proveedores
-          de servicios tecnológicos (hosting, analytics) con garantías adecuadas de
-          protección de datos. En concreto:
+          de servicios tecnológicos con garantías adecuadas de protección de datos. En
+          concreto:
         </p>
         <ul>
           <li>
-            <strong>Vercel Inc.</strong> (hosting web) — Transferencia internacional con
-            garantías adecuadas (Decisión de Adecuación UE-EEUU).
+            <strong>Vercel Inc.</strong> (hosting web) — Prestación del servicio de
+            alojamiento y despliegue del sitio web.
           </li>
           <li>
-            <strong>Google LLC</strong> (analítica web mediante Google Analytics, solo con
-            consentimiento) — Transferencia internacional con garantías adecuadas.
+            <strong>Google LLC</strong> (Google Tag Manager y Google Analytics, solo con
+            consentimiento) — Medición de uso del sitio web y eventos de interacción,
+            como llamadas iniciadas, clics en ubicación o navegación por tratamientos.
           </li>
         </ul>
+        <p>
+          El uso de servicios de terceros puede implicar transferencias internacionales de
+          datos. En esos casos, se aplicarán las garantías previstas por la normativa de
+          protección de datos aplicable.
+        </p>
       </section>
 
       <section>
@@ -160,6 +186,11 @@ export default function PoliticaPrivacidadPage() {
             <strong>Oposición:</strong> Oponerse al tratamiento basado en interés
             legítimo.
           </li>
+          <li>
+            <strong>Retirada del consentimiento:</strong> Retirar el consentimiento
+            otorgado para analítica web o cookies opcionales en cualquier momento, sin
+            que ello afecte a la licitud del tratamiento realizado previamente.
+          </li>
         </ul>
         <p>
           También tiene derecho a presentar una reclamación ante la{" "}
@@ -176,12 +207,33 @@ export default function PoliticaPrivacidadPage() {
       </section>
 
       <section>
-        <h2>8. Seguridad</h2>
+        <h2>8. Cookies, analítica y preferencias</h2>
+        <p>
+          Este sitio utiliza un sistema propio de gestión de consentimiento para cookies
+          y tecnologías similares. Las cookies o mecanismos estrictamente necesarios se
+          utilizan para permitir el funcionamiento básico de la web y recordar las
+          preferencias del usuario.
+        </p>
+        <p>
+          Las herramientas de analítica, como Google Tag Manager y Google Analytics, solo
+          se activan si el usuario acepta las categorías correspondientes desde el banner
+          o el panel de configuración de cookies.
+        </p>
+        <p>
+          Puede consultar información detallada en nuestra{" "}
+          <a href="/politica-cookies">Política de Cookies</a> y modificar sus
+          preferencias desde el enlace <strong>Configurar cookies</strong> disponible en
+          el pie de página.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Seguridad</h2>
         <p>
           Aplicamos las medidas técnicas y organizativas apropiadas para garantizar un
           nivel de seguridad adecuado al riesgo, conforme al artículo 32 del RGPD,
-          incluyendo cifrado de comunicaciones (HTTPS), control de acceso y copias de
-          seguridad periódicas.
+          incluyendo cifrado de comunicaciones (HTTPS), control de acceso y medidas de
+          seguridad razonables sobre la infraestructura tecnológica utilizada.
         </p>
       </section>
     </LegalLayout>

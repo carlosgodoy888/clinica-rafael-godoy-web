@@ -5,7 +5,7 @@ import { site } from "@/config/site";
 export const metadata: Metadata = {
   title: "Política de Cookies",
   description:
-    "Información sobre el uso de cookies en clinicarafaelgodoy.es. Gestión y configuración de cookies.",
+    "Información sobre el uso de cookies y almacenamiento local en clinicarafaelgodoy.es. Gestión y configuración de preferencias.",
   alternates: { canonical: `${site.domain}/politica-cookies` },
   robots: {
     index: false,
@@ -19,29 +19,55 @@ export const metadata: Metadata = {
 
 export default function PoliticaCookiesPage() {
   return (
-    <LegalLayout title="Política de Cookies" lastUpdated="Abril 2026">
+    <LegalLayout title="Política de Cookies" lastUpdated="Mayo 2026">
       <section>
-        <h2>1. ¿Qué son las Cookies?</h2>
+        <h2>1. ¿Qué son las cookies y tecnologías similares?</h2>
         <p>
-          Las cookies son pequeños archivos de texto que se almacenan en su dispositivo
-          cuando visita un sitio web. Permiten que el sitio recuerde sus preferencias y
-          acciones durante un período de tiempo, para que no tenga que volver a
-          introducirlas cuando visite de nuevo el sitio o navegue de una página a otra.
+          Las cookies son pequeños archivos que se almacenan en el dispositivo del
+          usuario cuando visita un sitio web. Además de cookies, una web puede utilizar
+          tecnologías similares, como el almacenamiento local del navegador
+          (&quot;localStorage&quot;), para recordar determinadas preferencias técnicas.
+        </p>
+        <p>
+          En esta política utilizamos el término &quot;cookies&quot; de forma amplia para
+          referirnos tanto a cookies como a tecnologías similares que permiten recordar
+          preferencias, medir el uso de la web o mejorar su funcionamiento.
         </p>
       </section>
 
       <section>
-        <h2>2. Cookies que Utilizamos</h2>
-
-        <h3>2.1 Cookies Estrictamente Necesarias</h3>
+        <h2>2. Sistema de consentimiento utilizado</h2>
         <p>
-          Son imprescindibles para el funcionamiento del sitio web. Sin estas cookies,
-          el sitio no puede funcionar correctamente. No requieren su consentimiento.
+          Este sitio web utiliza un sistema propio de gestión de consentimiento. Ya no
+          dependemos de plataformas externas de gestión de cookies para mostrar el
+          banner o guardar las preferencias del usuario.
         </p>
+        <p>
+          Cuando accede por primera vez a la web, puede aceptar todas las cookies
+          opcionales o gestionar sus preferencias. Dentro del panel de configuración puede
+          activar o desactivar las categorías opcionales disponibles.
+        </p>
+        <p>
+          Puede modificar su elección en cualquier momento desde el enlace
+          <strong> Configurar cookies</strong> disponible en el pie de página de la web.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Categorías de cookies y almacenamiento que utilizamos</h2>
+
+        <h3>3.1 Cookies y almacenamiento estrictamente necesarios</h3>
+        <p>
+          Son imprescindibles para que el sitio web funcione correctamente, mantener la
+          seguridad, recordar sus preferencias de consentimiento y permitir la navegación.
+          No requieren consentimiento previo.
+        </p>
+
         <table>
           <thead>
             <tr>
-              <th>Cookie</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
               <th>Proveedor</th>
               <th>Finalidad</th>
               <th>Duración</th>
@@ -49,52 +75,68 @@ export default function PoliticaCookiesPage() {
           </thead>
           <tbody>
             <tr>
-              <td>CookieConsent</td>
-              <td>Cookiebot</td>
-              <td>Almacena el estado de consentimiento del usuario</td>
-              <td>1 año</td>
+              <td>clinic_cookie_consent</td>
+              <td>Almacenamiento local</td>
+              <td>Propio</td>
+              <td>
+                Guarda la elección del usuario sobre cookies necesarias, analíticas y de
+                marketing.
+              </td>
+              <td>12 meses</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>2.2 Cookies de Estadísticas</h3>
+        <h3>3.2 Cookies de analítica</h3>
         <p>
-          Nos ayudan a entender cómo los visitantes interactúan con el sitio web
-          recopilando información de forma anónima. Solo se activan si acepta esta
-          categoría.
+          Nos ayudan a conocer cómo se utiliza la web, qué páginas o tratamientos se
+          consultan más, y a medir interacciones relevantes como llamadas iniciadas,
+          clics en ubicación o clics en botones de contacto. Solo se activan si el
+          usuario las permite.
         </p>
+
         <table>
           <thead>
             <tr>
-              <th>Cookie</th>
+              <th>Cookie / Servicio</th>
               <th>Proveedor</th>
               <th>Finalidad</th>
-              <th>Duración</th>
+              <th>Duración habitual</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>Google Tag Manager</td>
+              <td>Google LLC</td>
+              <td>
+                Permite gestionar etiquetas de medición y eventos de analítica de forma
+                centralizada.
+              </td>
+              <td>Según configuración de las etiquetas cargadas</td>
+            </tr>
+            <tr>
               <td>_ga</td>
               <td>Google Analytics</td>
-              <td>Distingue usuarios únicos</td>
-              <td>2 años</td>
+              <td>Distingue usuarios de forma seudónima para elaborar estadísticas.</td>
+              <td>Hasta 2 años</td>
             </tr>
             <tr>
               <td>_ga_*</td>
               <td>Google Analytics</td>
-              <td>Mantiene el estado de la sesión</td>
-              <td>2 años</td>
+              <td>Mantiene el estado de la sesión y medición de visitas.</td>
+              <td>Hasta 2 años</td>
             </tr>
           </tbody>
         </table>
 
-        <h3>2.3 Cookies de Marketing</h3>
+        <h3>3.3 Cookies de marketing</h3>
         <p>
-          Nuestro sitio incluye un mapa interactivo de Google Maps. Si acepta
-          las cookies de marketing, Google Maps se activará y puede establecer
-          sus propias cookies con fines de personalización y publicidad según
-          sus propias políticas.
+          Las cookies de marketing permitirían medir campañas publicitarias, mejorar la
+          atribución de anuncios y, en su caso, activar funcionalidades publicitarias de
+          Google u otros proveedores. Actualmente esta categoría queda preparada para
+          futuras campañas y solo se activará si el usuario la permite.
         </p>
+
         <table>
           <thead>
             <tr>
@@ -106,26 +148,43 @@ export default function PoliticaCookiesPage() {
           </thead>
           <tbody>
             <tr>
-              <td>Google Maps</td>
+              <td>Google Ads / medición publicitaria</td>
               <td>Google LLC</td>
-              <td>Mapa interactivo embebido; Google puede establecer cookies de personalización</td>
-              <td>Solo si acepta cookies de marketing</td>
+              <td>
+                Medición de campañas, conversiones publicitarias y mejora de anuncios,
+                si se activan campañas en el futuro.
+              </td>
+              <td>Solo si el usuario acepta cookies de marketing</td>
             </tr>
           </tbody>
         </table>
+      </section>
+
+      <section>
+        <h2>4. Google Consent Mode</h2>
         <p>
-          Si rechaza las cookies de marketing, el mapa no se cargará pero seguirá
-          pudiendo acceder a nuestra dirección y abrirnos en Google Maps o Apple
-          Maps usando los botones disponibles.
+          Esta web utiliza una configuración compatible con Google Consent Mode. Por
+          defecto, las finalidades de analítica y publicidad permanecen denegadas hasta
+          que el usuario decide sus preferencias.
+        </p>
+        <p>
+          Si el usuario acepta las cookies de analítica, se permite el almacenamiento
+          asociado a medición estadística. Si acepta las cookies de marketing, se
+          habilitan, en su caso, las señales publicitarias correspondientes. Si rechaza o
+          desactiva estas categorías, dichas finalidades permanecen denegadas.
         </p>
       </section>
 
       <section>
-        <h2>3. Cookies de Terceros</h2>
+        <h2>5. Cookies de terceros</h2>
         <p>
-          Nuestro sitio puede incluir contenido embebido de terceros (como Google Maps).
-          Estos servicios pueden establecer sus propias cookies cuando interactúa con
-          ellos. Consulte las políticas de privacidad de dichos proveedores:
+          Algunos servicios utilizados por esta web pueden ser prestados por terceros,
+          principalmente Google LLC, en relación con analítica, medición o enlaces a
+          servicios externos como Google Maps.
+        </p>
+        <p>
+          Puede consultar información adicional sobre el tratamiento realizado por Google
+          en su política de privacidad:
         </p>
         <ul>
           <li>
@@ -141,11 +200,19 @@ export default function PoliticaCookiesPage() {
       </section>
 
       <section>
-        <h2>4. Cómo Gestionar sus Preferencias</h2>
+        <h2>6. Cómo gestionar o retirar el consentimiento</h2>
         <p>
-          Puede gestionar sus preferencias de cookies en cualquier momento a través del
-          panel de configuración de cookies de este sitio (banner de consentimiento).
-          También puede configurar su navegador para bloquear o eliminar cookies:
+          Puede gestionar sus preferencias en cualquier momento desde el enlace
+          <strong> Configurar cookies</strong> situado en el pie de página de este sitio
+          web.
+        </p>
+        <p>
+          Desde ese panel puede mantener activadas todas las categorías opcionales,
+          desactivar analítica o marketing, o guardar una selección personalizada.
+        </p>
+        <p>
+          También puede bloquear o eliminar cookies y datos de sitios web desde la
+          configuración de su navegador:
         </p>
         <ul>
           <li>
@@ -186,30 +253,36 @@ export default function PoliticaCookiesPage() {
           </li>
         </ul>
         <p>
-          Tenga en cuenta que bloquear todas las cookies puede afectar al funcionamiento
-          de algunos sitios web.
+          Tenga en cuenta que bloquear determinadas cookies o tecnologías similares puede
+          afectar a la medición de la web, aunque las funciones básicas de navegación,
+          contacto y llamada seguirán disponibles.
         </p>
       </section>
 
       <section>
-        <h2>5. Base Legal</h2>
+        <h2>7. Base jurídica</h2>
         <p>
-          El uso de cookies está regulado por la Ley 34/2002, de Servicios de la Sociedad
-          de la Información (LSSI), y el Reglamento General de Protección de Datos (RGPD).
-          Las cookies estrictamente necesarias se basan en el interés legítimo del
-          responsable; el resto requieren su consentimiento previo e informado.
+          El uso de cookies y tecnologías similares se rige por la Ley 34/2002, de
+          Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI), el
+          Reglamento General de Protección de Datos (RGPD) y la normativa española de
+          protección de datos aplicable.
+        </p>
+        <p>
+          Las cookies o mecanismos estrictamente necesarios se utilizan por ser
+          imprescindibles para el funcionamiento del sitio. Las cookies de analítica y
+          marketing se utilizan únicamente sobre la base del consentimiento del usuario.
         </p>
       </section>
 
       <section>
-        <h2>6. Actualización de esta Política</h2>
+        <h2>8. Actualización de esta política</h2>
         <p>
-          Podemos actualizar esta Política de Cookies cuando sea necesario. Le notificaremos
-          de cambios significativos a través del banner de cookies. La fecha de última
-          actualización aparece en el encabezado de esta página.
+          Podemos actualizar esta Política de Cookies cuando sea necesario, por ejemplo
+          si modificamos las herramientas de medición, añadimos nuevas funcionalidades o
+          cambiamos el sistema de consentimiento.
         </p>
         <p>
-          Para cualquier consulta sobre nuestra política de cookies, puede contactarnos en{" "}
+          Para cualquier consulta sobre esta política, puede contactarnos en{" "}
           <a href="mailto:info@clinicarafaelgodoy.es">info@clinicarafaelgodoy.es</a>.
         </p>
       </section>

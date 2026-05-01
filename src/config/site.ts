@@ -10,13 +10,9 @@ export const site = {
     "dentista córdoba",
     "dr rafael godoy córdoba",
   ],
-  // Los IDs se leen de variables de entorno para poder sobrescribirlos
-  // por entorno desde el dashboard de Vercel.
-  // Los valores hardcoded actúan como fallback si la env var no existe.
+  // El ID de GTM se lee de variable de entorno para poder sobrescribirlo
+  // desde Vercel. El valor hardcoded actúa como fallback si la env var no existe.
   tracking: {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-T89SFQTZ",
-    cookiebotId:
-      process.env.NEXT_PUBLIC_COOKIEBOT_ID ??
-      "c7975d1-bb51-4502-90ba-26d82b4223fa",
   },
 };
