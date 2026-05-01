@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
+import { GtmLoader } from "@/components/analytics/GtmLoader";
+import { CookieConsentBanner } from "@/components/cookies/CookieConsentBanner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCallButton } from "@/components/layout/FloatingCallButton";
@@ -104,39 +105,16 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(doctorSchema) }}
         />
       </head>
-      {/*
-        Los <Script> de Next.js deben vivir FUERA del <head> JSX.
-        Next.js los inyecta en el lugar correcto según la strategy;
-        colocarlos dentro de <head> los duplica y rompe la hidratación.
-      */}
-      {/* Google Consent Mode V2 — antes de Cookiebot y GTM */}
-      <Script id="consent-init" strategy="beforeInteractive">
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'denied',personalization_storage:'denied',security_storage:'granted',wait_for_update:500});`}
-      </Script>
-      {/* Cookiebot */}
-      <Script
-        id="cookiebot"
-        src="https://consent.cookiebot.com/uc.js"
-        data-cbid={site.tracking.cookiebotId}
-        data-blockingmode="auto"
-        strategy="beforeInteractive"
-      />
-      {/* Google Tag Manager */}
-      <Script id="gtm-head" strategy="afterInteractive">
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${site.tracking.gtmId}');`}
-      </Script>
+
       <body className="min-h-full flex flex-col antialiased">
-        {/* GTM noscript */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${site.tracking.gtmId}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-            title="Google Tag Manager"
-          />
-        </noscript>
+        {/*
+          Sistema propio de consentimiento:
+          - Ya no cargamos Cookiebot.
+          - Ya no cargamos GTM de forma directa.
+          - GtmLoader inicializa Consent Mode en denied.
+          - GtmLoader carga GTM solo si el usuario acepta analítica o marketing.
+        */}
+        <GtmLoader />
 
         {/* Skip to content — accesibilidad teclado */}
         <a
@@ -152,6 +130,9 @@ gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personali
         </main>
         <Footer />
         <FloatingCallButton />
+
+        {/* Banner propio de consentimiento. Sustituye a Cookiebot. */}
+        <CookieConsentBanner />
       </body>
     </html>
   );

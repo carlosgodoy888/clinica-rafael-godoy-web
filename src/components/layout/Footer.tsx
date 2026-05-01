@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Phone, MapPin, Mail } from "lucide-react";
+import { CookiePreferencesButton } from "@/components/cookies/CookiePreferencesButton";
 import { clinic } from "@/config/clinic";
 import { primaryTreatments } from "@/config/treatments";
 import { trackPhoneCall, trackMapClick } from "@/lib/analytics";
@@ -182,6 +183,10 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+
+              <li>
+                <CookiePreferencesButton className="block w-full text-left hover:text-teal-400 transition-colors py-2 min-h-[44px]" />
+              </li>
             </ul>
           </div>
         </div>
