@@ -7,7 +7,6 @@ import {
   getConsentSnapshot,
   getServerConsentSnapshot,
   getStoredConsent,
-  setDefaultGoogleConsent,
   subscribeConsent,
   updateGoogleConsent,
 } from "@/lib/consent";
@@ -19,8 +18,9 @@ const GTM_SCRIPT_ID = "gtm-script";
  *
  * Importante:
  * - El script se identifica con `id="gtm-script"` para evitar duplicados.
- * - GTM se carga ahora desde el inicio de la visita.
- * - La privacidad la controla Google Consent Mode, no el bloqueo del script.
+ * - GTM se carga desde el inicio de la visita.
+ * - La privacidad la controla Google Consent Mode.
+ * - El default consent ya se define en layout.tsx con beforeInteractive.
  */
 function loadGtm(gtmId: string) {
   if (typeof window === "undefined") return;
@@ -88,29 +88,22 @@ function getCurrentPageContext() {
 /**
  * Componente responsable de Google Tag Manager + Consent Mode.
  *
- * Estrategia actual:
+ * Estrategia:
  *
- * 1. Siempre inicializamos Google Consent Mode en "denied".
- *    Esto significa:
- *    - analytics_storage denied
- *    - ad_storage denied
- *    - ad_user_data denied
- *    - ad_personalization denied
+ * 1. El consentimiento por defecto se define en layout.tsx con Script
+ *    beforeInteractive. Así GTM puede leerlo desde el inicio.
  *
- * 2. Cargamos GTM desde el inicio.
- *    Esto corresponde al enfoque de Consent Mode avanzado:
- *    GTM puede cargar, pero las etiquetas de Google deben respetar el estado
- *    de consentimiento.
+ * 2. Este componente carga GTM desde el inicio.
  *
- * 3. Si el usuario acepta cookies o tiene una preferencia guardada:
- *    actualizamos Consent Mode según su selección.
+ * 3. Si existe una preferencia guardada en localStorage, actualiza
+ *    Consent Mode según esa preferencia.
  *
- * 4. Si el usuario acepta analítica/marketing durante la sesión:
- *    enviamos eventos auxiliares al dataLayer:
+ * 4. Si el usuario concede analítica/marketing durante la sesión,
+ *    enviamos eventos auxiliares:
  *    - cookie_consent_update
  *    - consent_page_view
  *
- *    Estos eventos ayudan a GTM a disparar medición tras la aceptación.
+ *    Estos eventos ayudan a GTM/GA4 a medir tras la aceptación.
  */
 export function GtmLoader() {
   const consentSnapshot = useSyncExternalStore(
@@ -119,61 +112,45 @@ export function GtmLoader() {
     getServerConsentSnapshot
   );
 
-  const hasInitializedRef = useRef(false);
+  const hasRunRef = useRef(false);
   const previousConsentRef = useRef<ConsentPreferences | null>(null);
 
   useEffect(() => {
     /**
-     * 1. Inicializamos Consent Mode una sola vez.
+     * 1. Cargamos GTM siempre.
      *
-     * Debe ocurrir antes o al menos en la misma fase en la que cargamos GTM,
-     * para que Google Tags arranquen con estado denegado por defecto.
+     * El estado default de consentimiento ya está definido en layout.tsx
+     * antes de que este componente cargue GTM.
      */
-    if (!hasInitializedRef.current) {
-      setDefaultGoogleConsent();
-      hasInitializedRef.current = true;
-    }
+    loadGtm(site.tracking.gtmId);
 
     /**
      * 2. Leemos consentimiento guardado.
      *
-     * Si no existe, consent = null y se mantiene el estado denied.
-     * Si existe, se actualiza Consent Mode con sus preferencias.
+     * Si no existe, no actualizamos a granted y se mantiene el estado denied.
+     * Si existe, actualizamos Consent Mode según sus valores.
      */
     const consent = getStoredConsent();
 
     updateGoogleConsent(consent);
 
     /**
-     * 3. Cargamos GTM siempre.
+     * 3. Detectamos si el consentimiento cambia durante esta sesión.
      *
-     * Ya no bloqueamos GTM hasta aceptar. El control real lo hace Consent Mode.
-     * Esto permite recuperar page_view/session_start y mejorar medición.
-     */
-    loadGtm(site.tracking.gtmId);
-
-    /**
-     * 4. Detectamos cambios de consentimiento.
-     *
-     * En la primera ejecución no enviamos eventos extra para evitar duplicados
-     * en usuarios que ya tenían consentimiento guardado.
+     * La primera ejecución solo sincroniza estado.
+     * Las siguientes ejecuciones permiten detectar si el usuario acaba de
+     * aceptar analítica o marketing.
      */
     const previousConsent = previousConsentRef.current;
-    const isFirstRun = previousConsent === null;
+    const hasAlreadyRun = hasRunRef.current;
 
-    if (!isFirstRun && consent) {
+    if (hasAlreadyRun && consent) {
       const analyticsJustGranted =
         !previousConsent?.analytics && consent.analytics;
 
       const marketingJustGranted =
         !previousConsent?.marketing && consent.marketing;
 
-      /**
-       * Si el usuario acaba de conceder analítica o marketing durante esta sesión,
-       * avisamos a GTM con un evento explícito.
-       *
-       * Esto ayuda si el page_view inicial ocurrió con consentimiento denied.
-       */
       if (analyticsJustGranted || marketingJustGranted) {
         pushDataLayerEvent("cookie_consent_update", {
           consent_analytics: consent.analytics,
@@ -190,6 +167,7 @@ export function GtmLoader() {
       }
     }
 
+    hasRunRef.current = true;
     previousConsentRef.current = consent;
   }, [consentSnapshot]);
 
