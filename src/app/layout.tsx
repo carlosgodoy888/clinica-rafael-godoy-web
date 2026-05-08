@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { GtmLoader } from "@/components/analytics/GtmLoader";
 import { CookieConsentBanner } from "@/components/cookies/CookieConsentBanner";
@@ -95,6 +96,35 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.variable} h-full scroll-smooth`}>
       <head>
+        {/*
+          Consent Mode por defecto.
+
+          Este script debe ejecutarse antes de que Google Tag Manager lea
+          cualquier estado de consentimiento. Por eso va con beforeInteractive.
+
+          Importante:
+          - No instala GA4 directamente.
+          - No llama a gtag('config', 'G-VG070XK9G7').
+          - Solo define dataLayer, gtag y consentimiento por defecto en denied.
+          - GTM se carga después desde GtmLoader.
+        */}
+        <Script id="consent-default" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              functionality_storage: 'granted',
+              personalization_storage: 'denied',
+              security_storage: 'granted',
+              wait_for_update: 500
+            });
+          `}
+        </Script>
+
         {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
@@ -109,10 +139,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col antialiased">
         {/*
           Sistema propio de consentimiento:
-          - Ya no cargamos Cookiebot.
-          - Ya no cargamos GTM de forma directa.
-          - GtmLoader inicializa Consent Mode en denied.
-          - GtmLoader carga GTM solo si el usuario acepta analítica o marketing.
+          - Cookiebot eliminado.
+          - Consent Mode default se define arriba, antes de GTM.
+          - GtmLoader carga GTM.
+          - GtmLoader actualiza Consent Mode según la preferencia guardada.
         */}
         <GtmLoader />
 
